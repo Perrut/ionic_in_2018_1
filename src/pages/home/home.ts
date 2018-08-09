@@ -9,11 +9,18 @@ import { NavController, App } from 'ionic-angular';
 })
 export class HomePage {
 
+  userName: string = "";
+
   constructor(
     public navCtrl: NavController, 
     public sessions: SesionsProvider,
     public app: App) {
 
+  }
+
+  ionViewWillEnter(){
+    let user = localStorage.getItem("user");
+    this.userName = JSON.parse(user).name;
   }
 
   logout(): void{

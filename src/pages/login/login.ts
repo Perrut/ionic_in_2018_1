@@ -1,3 +1,4 @@
+import { CadastroPage } from './../cadastro/cadastro';
 import { TabsPage } from './../tabs/tabs';
 import { SesionsProvider } from './../../providers/sesions/sesions';
 import { Component } from '@angular/core';
@@ -36,4 +37,7 @@ export class LoginPage {
     }
   }
 
+  goToSignUp(): void{
+    this.navCtrl.push(CadastroPage);
+  }
 }

@@ -1,3 +1,4 @@
+import { CadastroPageModule } from './../pages/cadastro/cadastro.module';
 import { LoginPageModule } from './../pages/login/login.module';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -26,7 +27,8 @@ import { SesionsProvider } from '../providers/sesions/sesions';
     ComponentsModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    LoginPageModule
+    LoginPageModule,
+    CadastroPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
