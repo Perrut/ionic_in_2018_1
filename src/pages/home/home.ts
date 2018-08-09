@@ -1,5 +1,7 @@
+import { LoginPage } from './../login/login';
+import { SesionsProvider } from './../../providers/sesions/sesions';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, App } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -7,8 +9,15 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public navCtrl: NavController, 
+    public sessions: SesionsProvider,
+    public app: App) {
 
   }
 
+  logout(): void{
+    this.sessions.logout();
+    this.app.getRootNav().push(LoginPage);
+  }
 }
