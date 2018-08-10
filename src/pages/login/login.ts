@@ -37,6 +37,7 @@ export class LoginPage {
     this.sessions.login(this.username, this.password).subscribe(
       (data) => {
         localStorage.setItem("user", JSON.stringify(data.json()));
+        localStorage.setItem("logado", "true");
         console.log(data.json());
         this.navCtrl.setRoot(TabsPage);
       },

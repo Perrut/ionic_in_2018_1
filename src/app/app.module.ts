@@ -18,6 +18,7 @@ import { SesionsProvider } from '../providers/sesions/sesions';
 import { UsersProvider } from '../providers/users/users';
 
 import { PerfilPageModule } from './../pages/perfil/perfil.module';
+import { NewPostPageModule } from './../pages/new-post/new-post.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PerfilPageModule } from './../pages/perfil/perfil.module';
     LoginPageModule,
     CadastroPageModule,
     HttpModule,
-    PerfilPageModule
+    PerfilPageModule,
+    NewPostPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
