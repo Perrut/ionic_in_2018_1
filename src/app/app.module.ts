@@ -1,3 +1,4 @@
+import { FeedPageModule } from './../pages/feed/feed.module';
 import { CadastroPageModule } from './../pages/cadastro/cadastro.module';
 import { LoginPageModule } from './../pages/login/login.module';
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -19,6 +20,7 @@ import { UsersProvider } from '../providers/users/users';
 
 import { PerfilPageModule } from './../pages/perfil/perfil.module';
 import { NewPostPageModule } from './../pages/new-post/new-post.module';
+import { PostsProvider } from '../providers/posts/posts';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { NewPostPageModule } from './../pages/new-post/new-post.module';
     CadastroPageModule,
     HttpModule,
     PerfilPageModule,
-    NewPostPageModule
+    NewPostPageModule,
+    FeedPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -51,7 +54,8 @@ import { NewPostPageModule } from './../pages/new-post/new-post.module';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SesionsProvider,
-    UsersProvider
+    UsersProvider,
+    PostsProvider
   ]
 })
 export class AppModule {}
