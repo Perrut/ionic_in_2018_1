@@ -17,6 +17,8 @@ import { ComponentsModule } from '../components/components.module';
 import { SesionsProvider } from '../providers/sesions/sesions';
 import { UsersProvider } from '../providers/users/users';
 
+import { PerfilPageModule } from './../pages/perfil/perfil.module';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -31,7 +33,8 @@ import { UsersProvider } from '../providers/users/users';
     IonicModule.forRoot(MyApp),
     LoginPageModule,
     CadastroPageModule,
-    HttpModule
+    HttpModule,
+    PerfilPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

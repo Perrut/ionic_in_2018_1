@@ -34,23 +34,16 @@ export class LoginPage {
   }
 
   login() {
-    /* if (this.sessions.login(this.username, this.password)){
-      this.navCtrl.setRoot(TabsPage);
-    } else {
-      console.log("Usuário e senha incorretos");
-    } */
-    console.log("carregando");
-    
-    this.http.get(this.apiPath + "/posts").subscribe((data) => {
-      console.log(data.json());
-
-    },
-      () => {
-        console.log("não foi");
-
-      });
-
-      console.log("carregou");
+    this.sessions.login(this.username, this.password).subscribe(
+      (data) => {
+        localStorage.setItem("user", JSON.stringify(data.json()));
+        console.log(data.json());
+        this.navCtrl.setRoot(TabsPage);
+      },
+      (error) => {
+        console.log(error.json());
+      }
+    );
   }
 
   goToSignUp(): void {

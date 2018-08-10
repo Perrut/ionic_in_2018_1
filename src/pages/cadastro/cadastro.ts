@@ -1,13 +1,7 @@
+import { UsersProvider } from './../../providers/users/users';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { UserModel } from '../../models/user.model';
-
-/**
- * Generated class for the CadastroPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -21,7 +15,8 @@ export class CadastroPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    public userService: UsersProvider) {
     this.user = new UserModel();
   }
 
@@ -37,7 +32,13 @@ export class CadastroPage {
       this.user.password_confirmation === ""){
         this.presentCadastroInvalido();
     } else {
-      localStorage.setItem("user", JSON.stringify(this.user));
+      this.userService.create(this.user).subscribe(
+        (data) => {
+          console.log(data.json());
+        }, (error) => {
+          console.log(error.json());
+        }
+      );
       this.navCtrl.pop();
     }
   }

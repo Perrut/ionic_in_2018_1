@@ -1,3 +1,4 @@
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 /*
@@ -9,22 +10,16 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class SesionsProvider {
 
-  username = "teste@email.com";
-  password = "123456";
+  apiUrl = "/api";
 
-  constructor() {
+  constructor(public http: Http) {
   }
 
-  login(username: string, password: string): boolean{
-    if (username === this.username && password === this.password){
-      localStorage.setItem("logado", "true");
-      return true;
-    } else {
-      return false;
-    }
+  login(username: string, password: string) {
+    return this.http.post(`${this.apiUrl}/login`, { email: username, password: password });
   }
 
-  logout(): void{
+  logout(): void {
     localStorage.removeItem("logado");
   }
 }

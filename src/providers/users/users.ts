@@ -1,17 +1,17 @@
-import { HttpClient } from '@angular/common/http';
+import { UserModel } from './../../models/user.model';
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
-/*
-  Generated class for the UsersProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class UsersProvider {
 
-  constructor(public http: HttpClient) {
-    console.log('Hello UsersProvider Provider');
+  apiUrl = "/api";
+
+  constructor(public http: Http) {
+    
   }
 
+  create(user: UserModel){
+    return this.http.post(`${this.apiUrl}/users`, { user: user });
+  }
 }
