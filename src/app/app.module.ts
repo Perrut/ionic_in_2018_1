@@ -4,6 +4,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { HttpModule } from '@angular/http';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -14,6 +15,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ComponentsModule } from '../components/components.module';
 import { SesionsProvider } from '../providers/sesions/sesions';
+import { UsersProvider } from '../providers/users/users';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { SesionsProvider } from '../providers/sesions/sesions';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     LoginPageModule,
-    CadastroPageModule
+    CadastroPageModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,7 +45,8 @@ import { SesionsProvider } from '../providers/sesions/sesions';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    SesionsProvider
+    SesionsProvider,
+    UsersProvider
   ]
 })
 export class AppModule {}
