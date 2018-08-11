@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -55,7 +56,8 @@ import { PostsProvider } from '../providers/posts/posts';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SesionsProvider,
     UsersProvider,
-    PostsProvider
+    PostsProvider,
+    Geolocation
   ]
 })
 export class AppModule {}

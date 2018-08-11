@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, App } from 'ionic-angular';
 import { PostModel } from '../../models/post.model';
 import { LoginPage } from '../login/login';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @IonicPage()
 @Component({
@@ -14,23 +15,38 @@ export class NewPostPage {
 
   post: PostModel;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public sessions: SesionsProvider,
     public posts: PostsProvider,
-    public app: App) {
+    public app: App,
+    public geolocation: Geolocation) {
     this.post = new PostModel();
   }
 
   ionViewDidLoad() {
+    this.geolocation.getCurrentPosition().then((resp) => {
+      console.log(resp);
+      // resp.coords.latitude
+      // resp.coords.longitude
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+    let watch = this.geolocation.watchPosition();
+    watch.subscribe((data) => {
+      console.log(data);
+      // data can be a set of coordinates, or an error (if an error occurred).
+      // data.coords.latitude
+      // data.coords.longitude
+    });
     console.log('ionViewDidLoad NewPostPage');
   }
 
-  postar(){
-    if(this.post.text === "" ||
-      this.post.image_url === ""){
-        this.presentPostInvalido();
+  postar() {
+    if (this.post.text === "" ||
+      this.post.image_url === "") {
+      this.presentPostInvalido();
     } else {
       let user = JSON.parse(localStorage.getItem("user"));
       this.post.user_id = user.id;
@@ -55,7 +71,7 @@ export class NewPostPage {
     alert.present();
   }
 
-  logout(): void{
+  logout(): void {
     this.sessions.logout();
     this.app.getRootNav().push(LoginPage);
   }
